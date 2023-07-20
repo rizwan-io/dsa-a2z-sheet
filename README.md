@@ -78,3 +78,64 @@ Approach:
   * Use Euclidean theorem to find GCD: GCD(A, B) = GCD(A-B, B) where A > B, till one of them becomes 0 then the other is GCD, use GCD in the formula to find LCM.
 * Best:
   * Use improved euclidean theorem to find GCD: GCD(A%B, B) where A > B, then use the same approach as optimal
+
+### Recursion
+> When a function calls itself until a base condition is met is called Recursion.
+
+#### Stack Overflow
+When a function is called it is pushed onto the stack. When the function has finished executing it gets popped up from the stack.  
+If a function is called recursively without a base condition then the function is pushed onto the stack until stack memory runs out resulting in Stack overflow.
+
+<mark>Always provide a base condition while writing recursive code,</mark> otherwise it can result into stack overflow.
+
+#### Recursion Tree
+It is a graphical representation of recursion calls in a form of tree.   
+Example recursion tree for fibonacci series.  
+<img alt="recurssionTreeFibonacci" src="src/main/resources/static/recurssionTreeFibonacci.png" width="350"/>
+
+
+#### Pattern to Solve recursion
+1. Parameterized - The function prints the value.
+
+```java
+public class BasicRecursion {
+    public static void main(String[] args) {
+        function(5, 0);
+    }
+
+    static void function(int i, int sum) {
+        if (i < 1) {
+            System.out.print(sum);
+            return;
+        }
+        function(i-1, sum+i);
+    }
+}
+```
+
+2. Functional - The function returns the value.
+```java
+public class BasicRecursion {
+    public static void main(String[] args) {
+        System.out.println(sumOfSeries(5));
+    }
+
+    static int sumOfSeries(int n) {
+        if (n == 0) return 0;
+        int sum = n + sumOfSeries(--n);
+        return sum;
+    }
+}
+```
+#### Problems:
+Solution to all the recursion problems can be found at [Recursion.java](src/main/java/learnthebasics/recursion/Recursion.java)
+1. [Print 1 To N Without Loop](https://practice.geeksforgeeks.org/problems/print-1-to-n-without-using-loops-1587115620/1) -  TC = O(N) & SC = O(N)
+2. [Print GFG n times](https://practice.geeksforgeeks.org/problems/print-gfg-n-times/1) - TC = O(N) & SC = O(N)
+3. [Print N to 1 without loop](https://practice.geeksforgeeks.org/problems/print-n-to-1-without-loop/1) - TC = O(N) & SC = O(N)
+4. [Sum of first n terms](https://practice.geeksforgeeks.org/problems/sum-of-first-n-terms5843/1) - TC = O(N) & SC = O(N)
+5. [Factorial](https://practice.geeksforgeeks.org/problems/factorial5739/1) - TC = O(N) & SC = O(N)
+6. [Palindrome String](https://practice.geeksforgeeks.org/problems/palindrome-string0817/1) -  TC = O(N) & SC = O(N)
+7. [Fibonacci Number - LeetCode](https://leetcode.com/problems/fibonacci-number/submissions/973184456/) - TC = O(2^N) & SC = O(N)
+
+In recursive algorithms, space complexity is `O(n)` where n is the depth of the recursion tree. If each recursion call takes `O(m)` SC then the total SC would become `O(n*m)`.  
+TC is `O(n)` because the recursion tree is linear. In case of fibonacci almost each node has 2 children making it a binary recursion tree, hence the TC of fibonacci is `O(2^N)`.
