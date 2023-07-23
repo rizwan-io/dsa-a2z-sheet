@@ -320,3 +320,43 @@ Approach: <mark>Not all test cases are passing. TCs passed - 10/11</mark>
   * Increment left pointer and subtract a[left] if sum is greater than k
   * Increment right pointer and add a[right] if sum is less than k
   * TC = O(N) & SC = O(1)
+
+### Medium Problems:
+Solution to all the medium level problems can be found at [MediumArrayProblems.java](src/main/java/arrays/medium/MediumArrayProblems.java)
+
+#### 1. [Two Sum](https://leetcode.com/problems/two-sum/)
+Approach
+* Bruteforce:
+  * Traverse the array, pick the element, let's say x and search in the remaining array if 'target-x' is present
+  * TC = O(N^2) & SC = O(N)
+* Optimal:
+  * Use a HashMap<Element, Index>. Traverse the array, check if 'target-x' (x is the current element) exists in the hashmap.
+  * If yes then return the answer else put the element and index in hashmap
+  * TC = O(N) & SC = O(N)
+
+#### 2. [Two Sum - Variety 2](https://practice.geeksforgeeks.org/problems/key-pair5616/1?utm_source=gfg&utm_medium=article&utm_campaign=bottom_sticky_on_article)
+Approach:
+* Optimal: 
+  * The above approaches will also work but would not be optimal
+  * Sort the array and use 2 pointer left and right. SUM(arr[LEFT], arr[RIGHT])
+  * Increment left if sum > target
+  * Decrement right if sum < target
+  * TC = O(N) & SC = O(1)
+
+
+#### 3. [Sort 0s, 1s, 2s](https://leetcode.com/problems/sort-colors/)
+Approach:
+* Bruteforce:
+  * Sort the array and any sorting algorithm
+  * TC =  O(Nlog(N)) & SC = O(log(N))
+* Better: 
+  * Use a HashMap to keep the count of 0, 1 and 2
+  * TC = O(N) & SC = O(1)
+* Optimal: Dutch-National Flag Algorithm
+  * use 3 pointers low, mid and high
+  * Everything between 0 and low-1 is 0
+  * Everything between low to mid-1 is 1
+  * Everything between high+1 to n-1 is 2
+  * Assume entire array is sorted except for the part from mid to high
+  * Based on the value of mid do the necessary.
+  * TC = O(N) & SC = O(1)

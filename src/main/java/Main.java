@@ -1,9 +1,11 @@
 import arrays.easy.EasyArrayProblems;
+import arrays.medium.MediumArrayProblems;
+
+import java.util.Arrays;
 
 public class Main {
-    // Main method to test the programs.
+     // Main method to test the programs.
     public static void main(String[] args) {
-        int i = EasyArrayProblems.longestSubarrayWithSumK(new int[]{5, 1, 3, 0, 1, 5, 3, 1, 4, 2}, 5);
-        System.out.println(i);
+        MediumArrayProblems.sortColors2(new int[]{2, 0, 2, 1, 1, 0});
     }
 }
