@@ -189,7 +189,8 @@ TC is `O(n)` because the recursion tree is linear. In case of fibonacci almost e
 References: Thanks to Shahad (https://blog.shahadmahmud.com/) for the GIFs of sorting algorithms.
 
 ## Arrays:
-### Easy Problems
+### Easy Problems:
+Solutions to all the easy problems can be found at [EasyArrayProblems.java](src/main/java/arrays/easy/EasyArrayProblems.java)
 #### 1. [Largest Element in Array](https://practice.geeksforgeeks.org/problems/largest-element-in-array4009/0?utm_source=youtube&utm_medium=collab_striver_ytdescription&utm_campaign=largest-element-in-array)
 * Approach: 
   * Traverse the array and keep track of the largest element.
@@ -287,3 +288,35 @@ Approach:
 * Approach:
   * Basic Implementation: Keep track of consecutive ones and return the max
 * TC = O(N) & SC = O(1)
+
+#### 12. [Single Number](https://leetcode.com/problems/single-number/)
+Approach:
+* Bruteforce:
+  * Sort the array and check from left to right which element appears only once
+  * TC = O(Nlog(N)) & SC = O(log(N))
+* Better:
+  * Use HashMap to keep count of numbers
+  * TC = O(N) & SC = O(N)
+* Optimal:
+  * Use XOR (^) operator. X^X = 0 and X^0 = X
+  * TC = O(N) & SC = O(1)
+
+#### 13. [Longest Sub-Array with Sum K](https://practice.geeksforgeeks.org/problems/longest-sub-array-with-sum-k0809/1?utm_source=youtube&utm_medium=collab_striver_ytdescription&utm_campaign=longest-sub-array-with-sum-k)
+Approach:
+* Bruteforce:
+  * Calculate sum of all subarrays and keep a track of longest sub-array with sum K.
+  * TC = O(N^2) & SC = O(1)
+* Optimal:
+  * Use a HashMap<Sum, Index> to keep track of sum and index at which the sum occurs. 
+  * If sum == K then max = i+1
+  * If sum-K exists in hashMap then max = Math.max(max, hashMap.getValue(sum-K))
+  * TC = O(N) & SC = O(N)
+
+#### 14. [Longest Subarray With Sum K - Only Positives and Zeroes](https://www.codingninjas.com/studio/problems/longest-subarray-with-sum-k_6682399?utm_source=striver&utm_medium=website&utm_campaign=a_zcoursetuf)
+Approach: <mark>Not all test cases are passing. TCs passed - 10/11</mark>
+* Optimal: 
+  * The above-mentioned approaches will also work but is not an optimal solution if the array contains only positive and zeroes
+  * Use 2 Pointer approach to get an optimal result. (Sliding Window)
+  * Increment left pointer and subtract a[left] if sum is greater than k
+  * Increment right pointer and add a[right] if sum is less than k
+  * TC = O(N) & SC = O(1)

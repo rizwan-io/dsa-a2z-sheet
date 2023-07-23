@@ -4,6 +4,97 @@ import java.util.*;
 
 public class EasyArrayProblems {
 
+    // Longest Subarray With Sum K - Only Positives and Zeroes - Optimal
+    public static int longestSubarrayWithSumK(int []a, long k) {
+        int left = 0;
+        int right = 0;
+        int sum = 0;
+        int n = a.length;
+        int max = 0;
+
+        while (right < n) {
+            sum += a[right];
+            while (sum > k && left <= right) {
+                sum -= a[left];
+                left++;
+            }
+            if (sum == k) {
+                max = Math.max(max, right - left + 1);
+            }
+            right++;
+        }
+
+        return max;
+    }
+
+    // Longest Sub-Array with Sum K - Optimal
+    public static int lenOfLongSubarr2(int A[], int N, int K) {
+        HashMap<Integer, Integer> hashMap = new HashMap<>();
+        int sum = 0;
+        int max = 0;
+        for (int i = 0; i < N; i++) {
+            sum += A[i];
+            if (!hashMap.containsKey(sum)) {
+                hashMap.put(sum, i);
+            }
+            if (sum == K) {
+                max = i+1;
+            } else if (hashMap.containsKey(sum-K)) {
+                max = Math.max(max, i - hashMap.get(sum-K));
+            }
+        }
+        return max;
+    }
+
+    // Longest Sub-Array with Sum K - Bruteforce
+    public static int lenOfLongSubarr(int A[], int N, int K) {
+        int max = 0;
+        for (int i = 0; i < N; i++) {
+            long sum = 0;
+            for (int j = i; j < N; j++) {
+                sum += A[j];
+                if (sum == K) {
+                    int count = j - i + 1;
+                    max = Math.max(count, max);
+                }
+            }
+        }
+        return max;
+    }
+
+    // Single Number - Optimal
+    public int singleNumber3(int[] nums) {
+        int result = 0;
+        for (int num : nums) {
+            result = result ^ num;
+        }
+        return result;
+    }
+
+    // Single Number - Better
+    public int singleNumber2(int[] nums) {
+        HashMap<Integer, Integer> hashMap = new HashMap<>();
+        for (int num : nums) {
+            hashMap.merge(num, 1, Integer::sum);
+        }
+        for (Map.Entry<Integer, Integer> entry : hashMap.entrySet()) {
+            if (entry.getValue() == 1) return entry.getKey();
+        }
+        return -1;
+    }
+
+    // Single Number - Bruteforce
+    public int singleNumber(int[] nums) {
+        Arrays.sort(nums);
+        int n = nums.length;
+        for (int i = 0; i < n-1; i+=2) {
+            if (nums[i] != nums[i+1]) {
+                return nums[i];
+            }
+        }
+        return nums[n-1];
+    }
+
     // Max Consecutive Ones
     public int findMaxConsecutiveOnes(int[] nums) {
         int max = 0;
