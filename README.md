@@ -344,7 +344,7 @@ Approach:
   * TC = O(N) & SC = O(1)
 
 
-#### 3. [Sort 0s, 1s, 2s](https://leetcode.com/problems/sort-colors/)
+#### 3. [Sort 0s, 1s, 2s](https://leetcode.com/problems/sort-colors/) - Dutch-National Flag Algorithm
 Approach:
 * Bruteforce:
   * Sort the array and any sorting algorithm
@@ -360,3 +360,54 @@ Approach:
   * Assume entire array is sorted except for the part from mid to high
   * Based on the value of mid do the necessary.
   * TC = O(N) & SC = O(1)
+
+#### 4. [Majority Element](https://leetcode.com/problems/majority-element/) - Moore's Voting Algorithm
+The majority element is the element that appears more than ⌊n / 2⌋ times.  
+Approach:
+* Bruteforce:
+  * Use nested for-loop, outer to traverse the array, inner to count the number of times element appears
+  * TC = O(N^2) & SC = O(1)
+* Better:
+  * Use a HashMap to keep the track of element and its count.
+  * TC = O(N) & SC = O(N)
+* Optimal: Moore's Voting Algorithm
+  * Take 2 variables element and count (count doesn't store count of the element).
+  * Store the first element in element
+  * Traverse the array, if the element encountered is same as element then increment the count, Otherwise decrement the count. 
+  * If the value of count goes negative, Change the value of element with the element encountered and reset count to 0
+  * TC = O(N) & SC = O(1)
+
+#### 5. [Maximum Subarray](https://leetcode.com/problems/maximum-subarray/) - Kadane's Algorithm
+Given an integer array nums, find the subarray with the largest sum  
+Approach:
+* Bruteforce:
+  * Use nested for-loops and calculate the sum of every sub array possible and return the largest one.
+  * TC = O(N^2) & SC = O(1)
+* Optimal: Kadane's Algorithm
+  * Traverse the array and keep adding the sum.
+  * Don't carry forward if the sum is negative.
+  * And keep track of maximum
+  * TC = O(N) & SC = O(N)
+
+#### 6. [Best Time to Buy and Sell Stock](https://leetcode.com/problems/best-time-to-buy-and-sell-stock/)
+* Approach:
+  * Traverse the array and keep track of min.
+  * When you encounter an element calculate profit and reassign min if the current element is lesser.
+* TC = O(N) & SC = O(1)
+
+#### 7. [Rearrange Array Elements by Sign](https://leetcode.com/problems/rearrange-array-elements-by-sign/)
+Positives & Negatives are Equal.   
+Approach:
+* Bruteforce: 
+  * Use a Hashmap to keep track of positives and negatives and at last reassign and return.
+  * TC = O(N) & SC = O(N)
+* Optimal:
+  * We need to use an extra space no matter what, But can we do it in one pass?
+  * Use and auxiliary array and 2 pointers that would point to even indexes (positive number) and odd indexes (negative number)
+
+#### 8. [Alternate positive and negative numbers](https://practice.geeksforgeeks.org/problems/array-of-alternate-ve-and-ve-nos1401/1)
+The problem is similar to the one above but positives & negatives are not equal.  
+Approach:
+* Optimal:
+  * This optimal approach for this variety is kind of same as bruteforce for the above one
+  * TC = O(N) & SC = O(N)
