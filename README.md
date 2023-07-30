@@ -411,3 +411,81 @@ Approach:
 * Optimal:
   * This optimal approach for this variety is kind of same as bruteforce for the above one
   * TC = O(N) & SC = O(N)
+
+#### 9. [Next Permutation](https://leetcode.com/problems/next-permutation/)
+The next permutation of an array of integers is the next lexicographically greater permutation of its integer   
+* Approach:  
+  * The next permutation should have the longest prefix match with the current permutation.
+  * Traverse from the back and see where the `num[i] < num[i+1]` satisfies. Then i would be our breakpoint.
+  * All the elements from i+1 to n-1 will be in decreasing order for sure.
+  * Traverse again from the back and find the element which is just greater than `num[breakpoint]` swap them.
+  * Sort the sub-array from i+1 to n-1.
+* TC = O(3N) ~ O(N) & SC = O(1)
+
+#### 10. [Leaders in an array](https://practice.geeksforgeeks.org/problems/leaders-in-an-array-1587115620/1?utm_source=gfg&utm_medium=article&utm_campaign=bottom_sticky_on_article)
+An element of array is leader if it is greater than or equal to all the elements to its right side.  
+* Approach
+  * Traverse from right and keep count of max. Add the element to result array when max is reassigned.
+  * Reverse the result and return.
+* TC = O(N) & O(1)
+
+#### 11. [Longest Consecutive Sequence](https://leetcode.com/problems/longest-consecutive-sequence/description/)
+Approach:
+* Bruteforce:
+  * Sort the array and count the consecutive elements
+  * TC = O(Nlog(N)) & SC = O(log(N))
+* Optimal:
+  * Put all the elements in a HashSet
+  * Traverse the hashset. Let's say current element is x then check if x-1 exists
+  * If yes then do nothing. If x-1 doesn't exists that means x is the first number of the consecutive sequence.
+  * See how many numbers are there consecutive to x and store in count
+  * So the same for all the elements in hashSet and keep track of the max count.
+  * TC = O(N) for putting elements in hashset & O (2N) at worst for traversing in the hashset
+  * TC = O(N) + O(2N) = O(3N) & SC = O(N)
+
+#### 12. [Set Matrix Zeroes](https://leetcode.com/problems/set-matrix-zeroes/description/)
+Approach: 
+* Bruteforce:
+  * Use an auxiliary matrix and copy the original array in it.
+  * Traverse the original array and if encounter 0 make the row and column 0 in auxiliary matrix.
+  * O(N * M) & O(N * M)
+* Better:
+  * Instead of using an entire matrix use only an auxiliary row and auxiliary column
+  * Mark the ith cell 0 in aux row if there is 0 in the ith column
+  * Mark the ith cell 0 in aux column if there is 0 in the ith row
+  * Traverse the matrix again and fill 0 based on the value of aux col & row.
+  * TC = O(N * M) & SC = O(N + M)
+* Optimal:
+  * Instead of using an aux col & row use the 0th column and 0th row.
+  * But we need to use an extra space because matrix[0][0] cannot keep track of row & column both.
+  * So we will use 1 extra space for row[0]
+  * ![setMatrixZeroes.png](src/main/resources/static/setMatrixZeroes.png)
+  * Remember to the col0 use it at the last
+  * TC = O(N * M) & SC = O(1)
+
+#### 13. [Rotate Image (Matrix)](https://leetcode.com/problems/rotate-image/)
+* Bruteforce:
+  * Use an auxiliary 2D matrix to rotate
+  * TC = O(N^N) & SC = O(N^2)
+* Optimal:
+  * Transpose the matrix
+  * Reverse the matrix column wise
+  * TC = O(N^2) & SC = O(1)
+
+#### 14. [Spiral Matrix](https://leetcode.com/problems/spiral-matrix/description/)
+* Approach:
+  * This is an implementation problem.
+  * Use 4 pointers left, right, top & bottom
+  * Traverse from left -> right, top -> bottom, right -> left, bottom -> top
+* TC = O(N^2) & SC = O(1)
+
+#### 15. [Subarray Sum Equals K](https://leetcode.com/problems/subarray-sum-equals-k/)
+Approach:
+* Bruteforce:
+  * Find all the sub arrays and check if their sum is equal to k
+  * TC = O(N^2) & SC = O(1)
+* Optimal:
+  * Use a HashMap<Sum, CountOfTheSum> check if sum == K, If yes then increment ans
+  * Check if sum-K exists in the hashmap. If yes than add the CountOfTheSum ans.
+  * Return ans
+  * TC = O(N) & SC = O(N)
