@@ -7,14 +7,14 @@ Practice the following questions to level up your DSA game. This repository cont
 - [x] Basic Maths 
 - [x] Recursion
 
-### 2. Sorting Algorithms
+### 2. [Sorting Algorithms](src/main/java/sorting)
 - [x] Selection Sort
 - [x] Insertion Sort
 - [x] Bubble Sort
 - [x] Quick Sort
 - [x] Merge Sort
 
-### 3. Arrays
+### 3. [Arrays](src/main/java/arrays)
 - [x] Easy
 - [x] Medium
 - [ ] Hard
