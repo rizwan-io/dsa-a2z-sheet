@@ -1,4 +1,4 @@
-package learnthebasics.sorting;
+package sorting;
 
 public class SelectionSort {
 
