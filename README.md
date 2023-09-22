@@ -18,3 +18,8 @@ Practice the following questions to level up your DSA game. This repository cont
 - [x] Easy
 - [x] Medium
 - [ ] Hard
+
+### 4. [Binary Search](src/main/java/binarysearch)
+- [ ] BS on 1D
+- [ ] BS on Answers
+- [ ] BS on 2D Arrays
