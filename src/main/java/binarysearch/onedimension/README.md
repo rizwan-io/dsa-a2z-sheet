@@ -19,3 +19,18 @@ Approach:
 Approach:
 * Do Binary search and return if found, otherwise return low
 * TC = O(logN) & SC = O(1)
+
+### 5. [Ceil the Floor](https://www.codingninjas.com/studio/problems/ceiling-in-a-sorted-array_1825401?utm_source=striver&utm_medium=website&utm_campaign=a_zcoursetuf)
+
+
+### 6. [Find First and Last Position of Element in Sorted Array](https://leetcode.com/problems/find-first-and-last-position-of-element-in-sorted-array/)
+Approach:
+* First the first occurrence first then last.
+* TC = O(logN) & SC = O(1)
+
+### 7. [Number of occurrence](https://www.codingninjas.com/studio/problems/occurrence-of-x-in-a-sorted-array_630456?utm_source=striver&utm_medium=website&utm_campaign=a_zcoursetuf&leftPanelTab=1)
+Approach:
+* lastOccurrence - firstOccurrence + 1
+* TC = O(logN) & SC = O(1)
+
+

@@ -7,6 +7,92 @@ public class BsOnOneDimension {
         System.out.println(search);
     }
 
+    public static int count(int arr[], int n, int x) {
+        int low = 0;
+        int high = n - 1;
+
+        int firstOccurrence = -1;
+        int lastOccurence = -1;
+
+
+        // do for left
+        while (low <= high) {
+            int mid = (low + high) / 2;
+            if (arr[mid] == x) {
+                firstOccurrence = mid;
+                high = mid - 1;
+            } else if (arr[mid] < x) {
+                low = mid + 1;
+            } else {
+                high = mid - 1;
+            }
+        }
+
+        low = 0;
+        high = arr.length - 1;
+        while (low <= high) {
+            int mid = (low + high) / 2;
+            if (arr[mid] == x) {
+                lastOccurence = mid;
+                low = mid + 1;
+            } else if (arr[mid] < x) {
+                low = mid + 1;
+            } else {
+                high = mid - 1;
+            }
+        }
+        if (lastOccurence == -1 || firstOccurrence == -1) return 0;
+        return lastOccurence - firstOccurrence + 1;
+    }
+
+    public int[] searchRange(int[] nums, int target) {
+        int[] result = new int[2];
+        int low = 0;
+        int high = nums.length - 1;
+
+        int firstOccurrence = -1;
+        int lastOccurence = -1;
+
+
+        // do for left
+        while (low <= high) {
+            int mid = (low + high) / 2;
+            if (nums[mid] == target) {
+                firstOccurrence = mid;
+                high = mid - 1;
+            } else if (nums[mid] < target) {
+                low = mid + 1;
+            } else {
+                high = mid - 1;
+            }
+        }
+
+        low = 0;
+        high = nums.length - 1;
+        while (low <= high) {
+            int mid = (low + high) / 2;
+            if (nums[mid] == target) {
+                lastOccurence = mid;
+                low = mid + 1;
+            } else if (nums[mid] < target) {
+                low = mid + 1;
+            } else {
+                high = mid - 1;
+            }
+        }
+
+        result[0] = firstOccurrence;
+        result[1] = lastOccurence;
+
+        return result;
+    }
+
+    // https://www.codingninjas.com/studio/problems/ceiling-in-a-sorted-array_1825401
+    // Ceil the Floor
+    public static int ceilingInSortedArray(int n, int x, int[] arr) {
+
+    }
+
     // https://leetcode.com/problems/search-insert-position/description/
     // Search Insert Position
     public int searchInsert(int[] nums, int target) {
