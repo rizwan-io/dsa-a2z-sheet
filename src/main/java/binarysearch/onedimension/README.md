@@ -33,4 +33,13 @@ Approach:
 * lastOccurrence - firstOccurrence + 1
 * TC = O(logN) & SC = O(1)
 
+### 8. [Search in Rotated Sorted Array (Unique Elements)](https://leetcode.com/problems/search-in-rotated-sorted-array/)
+Approach:
+* Same as BS, One of the part either left or right would be sorted. 
+* TC = O(logN) & SC = O(1)
 
+### 9. [Search in Rotated Sorted Array II (Duplicate Elements)](https://leetcode.com/problems/search-in-rotated-sorted-array-ii/)
+Approach:
+* The above logic won't work in the case arr[mid] = arr[low] = arr[high]. Because there is no way to find which part is sorted.
+* In this case increment low and decrement high, Rest all are same as above
+* TC = O(logN) & SC = O(1)
