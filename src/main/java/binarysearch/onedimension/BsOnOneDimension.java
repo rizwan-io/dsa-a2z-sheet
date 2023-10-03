@@ -3,9 +3,65 @@ package binarysearch.onedimension;
 public class BsOnOneDimension {
 
     public static void main(String[] args) {
-        boolean i = search3(new int[]{1,0,1,1,1}, 0);
+        int i = findMin(new int[]{4, 5, 6, 7, 0, 1, 2});
         System.out.println(i);
     }
+
+
+    // https://www.codingninjas.com/studio/problems/rotation_7449070
+    // Rotation
+    public static int findKRotation(int []nums){
+        int low = 0;
+        int high = nums.length - 1;
+        int minimum = Integer.MAX_VALUE;
+        int result = -1;
+
+
+        while (low <= high) {
+            int mid = (low + high) / 2;
+
+            if (nums[low] <= nums[mid]) {
+                if (minimum > nums[low]) {
+                    minimum = nums[low];
+                    result = low;
+                }
+                low = mid + 1;
+            } else if(nums[mid] <= nums[high]) {
+                if (minimum > nums[mid]) {
+                    minimum = nums[mid];
+                    result = mid;
+                }
+                high = mid - 1;
+            }
+        }
+
+        return result;
+    }
+
+    // https://leetcode.com/problems/find-minimum-in-rotated-sorted-array/
+    // Find Minimum in Rotated Sorted Array
+    public static int findMin(int[] nums) {
+        int low = 0;
+        int high = nums.length - 1;
+        int minimum = Integer.MAX_VALUE;
+
+
+        while (low <= high) {
+            int mid = (low + high) / 2;
+
+            if (nums[low] <= nums[mid]) {
+                minimum = Math.min(minimum, nums[low]);
+                low = mid + 1;
+            } else if(nums[mid] <= nums[high]) {
+                minimum = Math.min(minimum, nums[mid]);
+                high = mid - 1;
+            }
+        }
+
+        return minimum;
+    }
+
+    // 4,5,6,7,0,1,2
 
     // https://leetcode.com/problems/search-in-rotated-sorted-array-ii/
     // Search in Rotated Sorted Array II (Duplicate elements)

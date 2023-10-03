@@ -43,3 +43,13 @@ Approach:
 * The above logic won't work in the case arr[mid] = arr[low] = arr[high]. Because there is no way to find which part is sorted.
 * In this case increment low and decrement high, Rest all are same as above
 * TC = O(logN) & SC = O(1)
+
+### 10. [Find Minimum in Rotated Sorted Array](https://leetcode.com/problems/find-minimum-in-rotated-sorted-array/)
+Approach:
+* Identify the sorted half, pick the minimum from it and then continue looking for min in the unsorted half
+* TC = O(logN) & SC = O(1)
+
+### 11. [Rotation](https://www.codingninjas.com/studio/problems/rotation_7449070)
+Approach:
+* Same as above, but return the index of the minimum instead of the number itself.
+* TC = O(logN) & SC = O(1)
