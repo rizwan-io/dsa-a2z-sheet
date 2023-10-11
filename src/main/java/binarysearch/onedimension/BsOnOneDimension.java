@@ -3,10 +3,69 @@ package binarysearch.onedimension;
 public class BsOnOneDimension {
 
     public static void main(String[] args) {
-        int i = findMin(new int[]{4, 5, 6, 7, 0, 1, 2});
+        int i = findPeakElement(new int[]{3,4,3,2,1});
         System.out.println(i);
     }
 
+    // https://leetcode.com/problems/find-peak-element/
+    // Find Peak Element
+    public static int findPeakElement(int[] nums) {
+        int low = 0;
+        int high = nums.length - 1;
+
+        // exit the loop when we only have 2 elements
+        while (low < high - 1) {
+            int mid = (low + high) / 2;
+            // mid is the peak element - fails in case where mid = 0 or n-1
+            if (nums[mid] > nums[mid-1] && nums[mid] > nums[mid+1]) {
+                return mid;
+            }
+            // check if the series is decreasing or not
+            // if the series is decreasing then the peak lies on the left part
+            else if (nums[mid-1] > nums[mid] && nums[mid] > nums[mid+1]) {
+                high = mid -1;
+            }
+            // else if the series is increasing then the peak lies on the right part
+            else {
+                low = mid + 1;
+            }
+        }
+
+
+        if (low == high) return low;
+        if (nums[low] > nums[low+1]) return low;
+        else return high;
+    }
+
+    // https://leetcode.com/problems/single-element-in-a-sorted-array/
+    // Single Element in a Sorted Array
+    public static int singleNonDuplicate(int[] nums) {
+        int low = 0;
+        int high = nums.length - 1;
+
+        while (low < high) {
+            int mid = (low + high) / 2;
+            if (nums[mid] != nums[mid+1] && nums[mid] != nums[mid-1]) {
+                return nums[mid];
+            } else {
+                if (mid % 2 == 0) {
+                    if (nums[mid] == nums[mid+1]) {
+                        low = mid + 2;
+                    } else {
+                        high = mid -2;
+                    }
+                } else {
+                    if (nums[mid] == nums[mid-1]) {
+                        low = mid + 1;
+                    } else {
+                        high = mid - 1;
+                    }
+                }
+            }
+        }
+
+        return nums[low];
+    }
 
     // https://www.codingninjas.com/studio/problems/rotation_7449070
     // Rotation
