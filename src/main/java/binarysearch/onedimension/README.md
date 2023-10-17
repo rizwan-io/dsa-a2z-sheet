@@ -53,3 +53,14 @@ Approach:
 Approach:
 * Same as above, but return the index of the minimum instead of the number itself.
 * TC = O(logN) & SC = O(1)
+
+### 12. [Square Root of a number](https://www.codingninjas.com/studio/problems/square-root-integral_893351?leftPanelTab=0%3Futm_source%3Dstriver&utm_medium=website&utm_campaign=a_zcoursetuf)
+Approach:
+* Ignore the left half if the number^2 is less than answer
+* Ignore the right half if the number^2 is greater than answer
+* TC = O(logN) & SC = O(1)
+
+### 13. [Find Nth Root Of M](https://www.codingninjas.com/studio/problems/nth-root-of-m_1062679?utm_source=striver&utm_medium=website&utm_campaign=a_zcoursetuf)
+Approach:
+* Same as above but instead of number^2 we do number^n
+* TC = O(logN) & SC = O(1)

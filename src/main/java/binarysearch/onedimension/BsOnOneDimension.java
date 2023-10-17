@@ -7,6 +7,48 @@ public class BsOnOneDimension {
         System.out.println(i);
     }
 
+
+    // https://www.codingninjas.com/studio/problems/nth-root-of-m_1062679
+    // Find Nth Root Of M
+    public static int NthRoot(int n, int m) {
+        int low = 1;
+        int high = m;
+
+        while(low <= high) {
+            int mid = (low + high) / 2;
+            int ans = (int) Math.pow(mid, n);
+            if (ans == m) {
+                return mid;
+            } else if (ans < m) {
+                low = mid + 1;
+            } else {
+                high = mid - 1;
+            }
+        }
+
+        return -1;
+    }
+
+    // https://www.codingninjas.com/studio/problems/square-root-integral_893351
+    // Square Root of a number
+    public static int sqrtN(long N) {
+        long low = 1;
+        long high = N;
+
+        while(low <= high) {
+            long mid = (low + high) / 2;
+            if (mid * mid == N) {
+                return (int) mid;
+            } else if (mid * mid < N) {
+                low = mid + 1;
+            } else {
+                high = mid - 1;
+            }
+        }
+
+        return (int) high;
+    }
+
     // https://leetcode.com/problems/find-peak-element/
     // Find Peak Element
     public static int findPeakElement(int[] nums) {
