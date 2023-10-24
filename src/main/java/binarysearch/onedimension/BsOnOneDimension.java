@@ -1,12 +1,271 @@
 package binarysearch.onedimension;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collections;
+
 public class BsOnOneDimension {
 
     public static void main(String[] args) {
-        int i = findPeakElement(new int[]{3,4,3,2,1});
+        int i = findPages(new ArrayList<>(Arrays.asList(3, 7, 9, 9, 9, 10, 3, 2, 2, 8, 6, 5, 9, 8, 3, 7, 9, 1, 4, 8, 10, 5, 10, 8, 2, 1, 10, 4, 10, 2, 4, 7, 10, 2, 2, 9, 9, 5, 2, 3, 1, 7, 10, 3, 9, 8, 10, 2, 7, 5, 10, 3, 9, 8, 4, 5, 7, 5, 5, 6, 2, 7, 5, 5, 1, 4, 1, 1, 7, 6, 6, 8, 2, 2, 1, 1, 2, 8, 10, 8, 3, 10, 9, 6, 7, 8, 3, 3, 1, 6, 2, 6, 7, 10, 2, 6, 6, 2, 2, 3, 7, 6, 8, 3, 10, 1, 6, 3, 4, 5, 4, 4, 2, 6, 2, 1, 9, 4, 1, 9, 1, 7, 4, 9, 6, 3, 8, 1, 7, 6, 5, 9, 1, 7, 5, 10, 2, 1, 6, 8, 2, 10, 9, 10, 1, 8, 6, 4, 8, 2, 1, 6, 6, 5, 7, 3, 8, 3, 8, 3, 5, 2, 5, 9, 7, 6, 7, 6, 4, 6, 7, 8, 8, 9, 8, 7, 2, 9, 2, 6, 4, 1, 4, 2, 1, 9, 1, 4, 9, 9, 3, 10, 4, 8, 2, 5, 10, 5, 10, 2, 1, 2, 5, 1, 8, 3, 5, 10, 2, 1, 1, 3, 1, 5, 4, 9, 1, 5, 6, 4, 6, 6, 8, 1, 5, 6, 7, 6, 2, 9, 8, 6, 6, 9, 7, 3, 4, 6, 8, 2, 4, 4, 1, 4, 6, 1, 3, 5, 10, 5, 3, 2, 1, 1, 7, 8, 1, 3, 5, 10, 9, 10, 6, 3, 2, 4, 7, 9, 8, 3, 8, 1, 9, 10, 10, 7, 1, 8, 6, 4, 5, 5, 7, 2, 2, 10, 9, 10, 2, 4, 9, 10, 2, 2, 2, 3, 8, 6, 10, 8, 4, 1, 4, 9, 6, 9, 6, 1, 3, 5, 7, 3, 5, 9, 8, 9, 3, 3, 5, 8, 5, 10, 8, 3, 7, 9, 5, 2, 8, 5, 10, 10, 1, 10, 1, 2, 4, 7, 3, 6, 10, 5, 9, 8, 7, 3, 8, 4, 6, 9, 7, 8, 4, 1, 4, 6, 5, 9, 6, 5, 3, 7, 5, 1, 10, 9, 4, 9, 8, 6, 4, 6, 7, 3, 5, 7, 2, 1, 7, 8, 7, 10, 10, 9, 7, 3, 9, 8, 9, 1, 10, 2, 4, 10, 8, 7, 4, 5, 3, 3, 5, 10, 2, 4, 4, 8, 9, 2, 6, 10, 3, 7, 10, 9, 3, 5, 1, 5, 10, 10, 10, 10, 3, 2, 8, 9, 8, 10, 1, 9, 9, 9, 5, 7, 6, 5, 2, 7, 10, 10, 4, 6, 6, 2, 7, 9, 2, 4, 2, 4, 6, 10, 10, 7, 4, 1, 3, 3, 1, 3, 3, 3, 4, 3, 1, 1, 4, 7, 8, 7, 2, 10, 4, 4, 4, 4, 2, 3, 8, 10, 7, 7, 4, 7, 7, 9, 2, 1, 5, 9, 9, 7, 9, 10, 10, 7, 1, 8, 7, 3, 3, 4, 2, 3, 4, 7, 10, 2, 7, 9, 3, 3, 4, 10, 5, 9, 9, 2, 7, 6, 8, 5, 9, 6, 1, 7, 1, 10, 7, 2, 1, 3, 7, 7, 8, 2, 8, 9, 7, 2, 8, 1, 4, 3, 9, 10, 7, 6, 1, 2, 3, 8, 6, 6, 3, 10, 2, 1, 10, 10, 2, 10, 3, 9, 7, 3, 9, 7, 10, 7, 5, 1, 10, 10, 2, 8, 3, 9, 6, 8, 1, 4, 7, 1, 4, 2, 3, 9, 8, 10, 9, 10, 4, 9, 1, 4, 8, 10, 4, 8, 4, 4, 10, 2, 5, 2, 8, 1, 1, 8, 6, 3, 2, 7, 2, 8, 5, 10, 9, 7, 6, 3, 7, 6, 10, 1, 1, 7, 6, 4, 1, 3, 6, 3, 5, 6, 10, 6, 1, 6, 2, 7, 7, 8, 10, 5, 8, 3, 9, 6, 8, 7, 6, 6, 3, 3, 1, 6, 8, 9, 8, 2, 7, 3, 2, 3, 3, 6, 5, 9, 4, 8, 2, 10, 4, 8, 1, 8, 7, 5, 4, 10, 1, 3, 1, 7, 7, 9, 5, 9, 5, 9, 7, 3, 2, 2, 5, 7, 6, 7, 6, 6, 5, 3, 5, 6, 9, 3, 10, 8, 2, 4, 1, 2, 1, 8, 2, 2, 2, 4, 4, 5, 5, 2, 2, 8, 8, 3, 10, 10, 1, 10, 4, 2, 5, 3, 9, 10, 4, 2, 3, 9, 4, 9, 9, 6, 1, 7, 10, 7, 7, 10, 2, 9, 3, 3, 9, 6, 8, 6, 3, 7, 7, 7, 1, 5, 2, 5, 3, 9, 8, 1, 8, 2, 6, 8, 7, 6, 1, 1, 4, 3, 8, 6, 2, 1, 5, 10, 8, 10, 7, 2, 7, 2, 9, 9, 3, 10, 3, 5, 7, 1, 6, 9, 10, 10, 10, 9, 5, 9, 3, 10, 9, 6, 7, 6, 4, 2, 6, 2, 9, 2, 8, 4, 6, 10, 6, 9, 3, 7, 8, 3, 3, 3, 7)), 835, 591);
         System.out.println(i);
     }
 
+    // https://www.codingninjas.com/studio/problems/allocate-books_1090540
+    // Allocate Books
+    public static int findPages(ArrayList<Integer> arr, int n, int m) {
+        int low = Collections.max(arr);
+        int high = arr.stream().mapToInt(Integer::intValue).sum();
+
+        if (m > n) return -1;
+
+        while (low <= high) {
+            int mid = (low + high) / 2;
+            int students = studentsAllocated(arr, mid);
+            if (students > m) {
+                low = mid + 1;
+            } else {
+                high = mid - 1;
+            }
+        }
+
+        return low;
+    }
+
+    private static int studentsAllocated(ArrayList<Integer> arr, int thresholdPages) {
+        int student = 1;
+        int totalPages = 0;
+
+        for (int i = 0; i < arr.size(); i++) {
+            if (totalPages + arr.get(i) <= thresholdPages) totalPages += arr.get(i);
+            else {
+                student++;
+                totalPages = arr.get(i);
+            }
+        }
+
+        return student;
+    }
+
+    public static boolean canPlaceCows(int[] stalls, int numberOfCows, int distance) {
+        int prevStallIndex = 0;
+        int currentStallIndex = 1;
+        numberOfCows--;
+
+        while ((numberOfCows != 0) && (currentStallIndex < stalls.length)) {
+            if (stalls[currentStallIndex] - stalls[prevStallIndex] >= distance) {
+                numberOfCows--;
+                prevStallIndex = currentStallIndex;
+            }
+            currentStallIndex++;
+        }
+
+        if (numberOfCows > 0) return false;
+        else return true;
+    }
+
+    // https://www.codingninjas.com/studio/problems/aggressive-cows_1082559
+    // Aggressive Cows
+    public static int aggressiveCows(int []stalls, int k) {
+        Arrays.sort(stalls);
+
+        int low = 1;
+        int high = stalls[stalls.length - 1] - stalls[0];
+
+        while (low <= high) {
+            int mid = (low + high) / 2;
+            if (canPlaceCows(stalls, k, mid)) {
+                low = mid + 1;
+            } else {
+                high = mid - 1;
+            }
+        }
+
+        return high;
+    }
+
+    // https://leetcode.com/problems/kth-missing-positive-number/
+    // Kth Missing Positive Number - O(LogN) Approach
+    // arr = [2,3,4,7,11], k = 5
+    public static int findKthPositive2(int[] arr, int k) {
+        int low = 0;
+        int high = arr.length - 1;
+
+        while (low <= high) {
+            int mid = (low + high) / 2;
+            int missingNumber = arr[mid] - mid - 1;
+            if (missingNumber >= k) {
+                high = mid - 1;
+            } else  {
+                low = mid + 1;
+            }
+        }
+
+        if (high == -1) return k;
+        else {
+            int offset = arr[high] - high - 1;
+            return arr[high] + k - offset;
+        }
+
+    }
+
+    // https://leetcode.com/problems/kth-missing-positive-number/
+    // Kth Missing Positive Number - O(N) Approach
+    public int findKthPositive(int[] arr, int k) {
+        int i = 0;
+        int num = 0;
+        int miss = 0;
+
+        while (i < arr.length) {
+            num++;
+            if (arr[i] == num) i++;
+            else miss++;
+
+            if (miss == k) return num;
+        }
+
+        return arr[arr.length-1] + (k-miss);
+    }
+
+    // https://leetcode.com/problems/capacity-to-ship-packages-within-d-days/
+    // Capacity To Ship Packages Within D Days
+    public static int shipWithinDays(int[] weights, int days) {
+        int lowestWeight = Arrays.stream(weights).max().getAsInt();
+        int highesWeight = Arrays.stream(weights).sum();
+        int result = lowestWeight;
+
+        while (lowestWeight <= highesWeight) {
+            int midWeight = (lowestWeight + highesWeight) / 2;
+
+            int sumWeight = 0;
+            int daysPassed = 0;
+
+            for (int i = 0; i < weights.length; i++) {
+                sumWeight += weights[i];
+
+                if (sumWeight == 0) {
+                    daysPassed++;
+                    sumWeight = 0;
+                } else if (sumWeight > midWeight) {
+                    daysPassed++;
+                    sumWeight = weights[i];
+                }
+            }
+
+            if (sumWeight > 0) daysPassed++;
+
+            if (daysPassed <= days) {
+                highesWeight = midWeight - 1;
+                result = midWeight;
+            } else {
+                lowestWeight = midWeight + 1;
+            }
+        }
+
+        return result;
+    }
+
+    // https://leetcode.com/problems/find-the-smallest-divisor-given-a-threshold/
+    // Find the Smallest Divisor Given a Threshold
+    public static int smallestDivisor(int[] nums, int threshold) {
+        int low = 1;
+        int high = nums[0];
+        int result = -1;
+
+        for (int i = 0; i < nums.length; i++) {
+            high = Math.max(nums[i], high);
+        }
+
+        while (low <= high) {
+            int mid = (low + high) / 2;
+            int sum = 0;
+
+            for (int i = 0; i < nums.length; i++) {
+                int temp = (int) Math.ceil(nums[i] / (double) mid );
+                sum += temp;
+            }
+
+            if (sum <= threshold) {
+                result = mid;
+                high = mid - 1;
+            } else if (sum > threshold) {
+                low = mid + 1;
+            }
+        }
+
+        return result;
+    }
+
+    // https://leetcode.com/problems/minimum-number-of-days-to-make-m-bouquets/
+    // Minimum Number of Days to Make m Bouquets
+    public static int minDays(int[] bloomDay, int m, int k) {
+        int low = bloomDay[0];
+        int high = bloomDay[0];
+        int result = -1;
+
+        // get lows and highs
+        for (int i = 0; i < bloomDay.length; i++) {
+            low = Math.min(low, bloomDay[i]);
+            high = Math.max(high, bloomDay[i]);
+        }
+
+        while (low <= high) {
+            int mid = (low + high) / 2;
+            int count = 0;
+            int flowers = 0;
+
+            for (int i = 0; i < bloomDay.length; i++) {
+                int temp = bloomDay[i] - mid;
+
+                if (temp <= 0) count++;
+                else count = 0;
+
+                if (count == k) {
+                    count = 0;
+                    flowers++;
+                }
+            }
+
+            if (flowers >= m) {
+                result = mid;
+                high = mid - 1;
+            } else {
+                low = mid + 1;
+            }
+        }
+
+        return result;
+    }
+
+    // https://leetcode.com/problems/koko-eating-bananas/
+    // Koko Eating Bananas
+    public static int minEatingSpeed(int[] piles, int h) {
+        int low = 0;
+        int high = 0;
+
+        for (int i = 0 ; i < piles.length; i++) {
+            low += piles[i];
+            high = Math.max(high, piles[i]);
+        }
+        low = (low / h);
+
+        while (low <= high) {
+            int totalTime = 0;
+            int mid = (low + high) / 2;
+
+            for (int i = 0; i < piles.length; i++) {
+                totalTime += Math.ceil(piles[i] / (double) mid);
+            }
+
+            if (totalTime <= h) {
+                high = mid - 1;
+            } else {
+                low = mid + 1;
+            }
+        }
+
+        return low;
+    }
 
     // https://www.codingninjas.com/studio/problems/nth-root-of-m_1062679
     // Find Nth Root Of M
