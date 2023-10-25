@@ -11,6 +11,72 @@ public class BsOnOneDimension {
         System.out.println(i);
     }
 
+    public static int findLargestMinDistance(ArrayList<Integer> boards, int k) {
+        int low = Collections.max(boards);
+        int high = boards.stream().mapToInt(Integer::intValue).sum();
+
+        while (low <= high) {
+            int mid = (low + high) / 2;
+            int parts = divideBoards(boards, mid);
+            if (parts > k) {
+                low = mid + 1;
+            } else {
+                high = mid - 1;
+            }
+        }
+
+        return low;
+    }
+
+    private static int divideBoards(ArrayList<Integer> boards, int threshold) {
+        int sum  = 0;
+        int painter = 1;
+
+        for (int i = 0; i < boards.size(); i++) {
+            if (sum + boards.get(i) <= threshold) sum += boards.get(i);
+            else {
+                painter++;
+                sum = boards.get(i);
+            }
+        }
+
+        return painter;
+    }
+
+    // https://leetcode.com/problems/split-array-largest-sum/
+    // Split Array Largest Sum
+    public static int splitArray(int[] nums, int k) {
+        int low = Arrays.stream(nums).max().getAsInt();
+        int high = Arrays.stream(nums).sum();
+
+        while (low <= high) {
+            int mid = (low + high) / 2;
+            int parts = divideArray(nums, mid);
+            if (parts > k) {
+                low = mid + 1;
+            } else {
+                high = mid - 1;
+            }
+        }
+        return low;
+    }
+
+    public static int divideArray(int[] arr, int thresholdSum) {
+        int parts = 1;
+        int sum = 0;
+
+        for (int i = 0; i < arr.length; i++) {
+            if (sum + arr[i] <= thresholdSum) sum += arr[i];
+            else {
+                parts++;
+                sum = arr[i];
+            }
+        }
+
+        return parts;
+    }
+
+
     // https://www.codingninjas.com/studio/problems/allocate-books_1090540
     // Allocate Books
     public static int findPages(ArrayList<Integer> arr, int n, int m) {
